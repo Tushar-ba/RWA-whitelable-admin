@@ -1,0 +1,2127 @@
+{
+  "address": "3teuujqputEYdvTTLK6eoYygKF2EWDdgFVFGQoce3mc3",
+  "metadata": {
+    "name": "silver_token",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_role",
+      "discriminator": [
+        45,
+        20,
+        52,
+        132,
+        56,
+        24,
+        179,
+        37
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_role",
+          "writable": true
+        },
+        {
+          "name": "default_admin_role",
+          "optional": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "user",
+          "type": "pubkey"
+        },
+        {
+          "name": "role",
+          "type": {
+            "defined": {
+              "name": "Role"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "cancel_redemption",
+      "discriminator": [
+        197,
+        243,
+        101,
+        86,
+        2,
+        37,
+        105,
+        106
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "redemption_request",
+          "writable": true
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "redemption_pda",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  100,
+                  101,
+                  109,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  112,
+                  100,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "redemption_request.user",
+                "account": "RedemptionRequest"
+              },
+              {
+                "kind": "account",
+                "path": "redemption_request.request_id",
+                "account": "RedemptionRequest"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "supply_controller_role",
+          "docs": [
+            "Optional: Role account for supply controller access (only needed if not own request)"
+          ],
+          "optional": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "fulfill_redemption",
+      "discriminator": [
+        135,
+        55,
+        160,
+        245,
+        203,
+        83,
+        197,
+        146
+      ],
+      "accounts": [
+        {
+          "name": "config"
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "redemption_request",
+          "writable": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "relations": [
+            "redemption_request"
+          ]
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "redemption_pda",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  100,
+                  101,
+                  109,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  112,
+                  100,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "account",
+                "path": "redemption_request.request_id",
+                "account": "RedemptionRequest"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "mint_authority_pda",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  105,
+                  110,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "supply_controller_role",
+          "docs": [
+            "Required: Role account for supply controller access"
+          ]
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "gatekeeper_program",
+          "address": "HPpSduHvXR6U26ZWPy9DRuASMzGnqis8EPKNxiHHbWJY"
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "gatekeeper_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "gatekeeper_program"
+            }
+          }
+        },
+        {
+          "name": "extra_account_meta_list",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  120,
+                  116,
+                  114,
+                  97,
+                  45,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "gatekeeper_program"
+            }
+          }
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "mint_authority_pda",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  105,
+                  110,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "asset_protection_pda",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  115,
+                  115,
+                  101,
+                  116,
+                  95,
+                  112,
+                  114,
+                  111,
+                  116,
+                  101,
+                  99,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "supply_controller_pda",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  112,
+                  112,
+                  108,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  116,
+                  114,
+                  111,
+                  108,
+                  108,
+                  101,
+                  114
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "mint_tokens",
+      "discriminator": [
+        59,
+        132,
+        24,
+        246,
+        122,
+        39,
+        8,
+        243
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "mint_authority_pda",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  105,
+                  110,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "recipient"
+        },
+        {
+          "name": "recipient_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "recipient"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "supply_controller_role",
+          "docs": [
+            "Required: Role account for enum-based access"
+          ]
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "recipient",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "remove_role",
+      "discriminator": [
+        74,
+        69,
+        168,
+        163,
+        248,
+        3,
+        130,
+        0
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_role",
+          "writable": true
+        },
+        {
+          "name": "default_admin_role",
+          "optional": true
+        }
+      ],
+      "args": [
+        {
+          "name": "user",
+          "type": "pubkey"
+        },
+        {
+          "name": "role",
+          "type": {
+            "defined": {
+              "name": "Role"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "request_redemption",
+      "discriminator": [
+        14,
+        62,
+        182,
+        237,
+        59,
+        79,
+        149,
+        22
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "redemption_request",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  100,
+                  101,
+                  109,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  114,
+                  101,
+                  113,
+                  117,
+                  101,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "account",
+                "path": "config.redemption_request_counter.checked_add(1)",
+                "account": "Config"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "mint",
+          "writable": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "redemption_pda",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  100,
+                  101,
+                  109,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  112,
+                  100,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "account",
+                "path": "config.redemption_request_counter.checked_add(1)",
+                "account": "Config"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "set_admin",
+      "discriminator": [
+        251,
+        163,
+        0,
+        52,
+        91,
+        194,
+        187,
+        92
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "default_admin_role"
+        }
+      ],
+      "args": [
+        {
+          "name": "admin",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "set_redemption_processing",
+      "discriminator": [
+        113,
+        21,
+        252,
+        209,
+        85,
+        199,
+        189,
+        75
+      ],
+      "accounts": [
+        {
+          "name": "config"
+        },
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "redemption_request",
+          "writable": true
+        },
+        {
+          "name": "supply_controller_role",
+          "docs": [
+            "Required: Role account for supply controller access"
+          ]
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "toggle_pause",
+      "discriminator": [
+        238,
+        237,
+        206,
+        27,
+        255,
+        95,
+        123,
+        229
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "transfer_mint_authority",
+      "docs": [
+        "Transfer mint authority from PDA back to a new authority (admin only)"
+      ],
+      "discriminator": [
+        87,
+        237,
+        187,
+        84,
+        168,
+        175,
+        241,
+        75
+      ],
+      "accounts": [
+        {
+          "name": "config"
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "mint_authority_pda",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109,
+                  105,
+                  110,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        }
+      ],
+      "args": [
+        {
+          "name": "new_authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "wipe_blacklisted_address",
+      "discriminator": [
+        217,
+        160,
+        185,
+        101,
+        45,
+        131,
+        52,
+        26
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "target_user"
+        },
+        {
+          "name": "target_token_account",
+          "writable": true
+        },
+        {
+          "name": "blacklist_entry"
+        },
+        {
+          "name": "asset_protection_pda",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  115,
+                  115,
+                  101,
+                  116,
+                  95,
+                  112,
+                  114,
+                  111,
+                  116,
+                  101,
+                  99,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                42,
+                242,
+                220,
+                211,
+                252,
+                2,
+                203,
+                99,
+                111,
+                86,
+                129,
+                37,
+                81,
+                124,
+                59,
+                160,
+                165,
+                193,
+                127,
+                245,
+                110,
+                137,
+                65,
+                180,
+                31,
+                91,
+                128,
+                46,
+                201,
+                36,
+                114,
+                160
+              ]
+            }
+          }
+        },
+        {
+          "name": "asset_protection_role",
+          "docs": [
+            "Required: Role account for enum-based access"
+          ]
+        },
+        {
+          "name": "gatekeeper_program",
+          "address": "HPpSduHvXR6U26ZWPy9DRuASMzGnqis8EPKNxiHHbWJY"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Config",
+      "discriminator": [
+        155,
+        12,
+        170,
+        224,
+        30,
+        250,
+        204,
+        130
+      ]
+    },
+    {
+      "name": "RedemptionRequest",
+      "discriminator": [
+        117,
+        157,
+        214,
+        214,
+        64,
+        160,
+        31,
+        58
+      ]
+    },
+    {
+      "name": "UserRole",
+      "discriminator": [
+        62,
+        252,
+        194,
+        137,
+        183,
+        165,
+        147,
+        28
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "AdminSet",
+      "discriminator": [
+        157,
+        245,
+        205,
+        226,
+        118,
+        125,
+        183,
+        97
+      ]
+    },
+    {
+      "name": "AuthorityTransferred",
+      "discriminator": [
+        245,
+        109,
+        179,
+        54,
+        135,
+        92,
+        22,
+        64
+      ]
+    },
+    {
+      "name": "PauseToggled",
+      "discriminator": [
+        105,
+        215,
+        89,
+        53,
+        198,
+        232,
+        136,
+        161
+      ]
+    },
+    {
+      "name": "RedemptionCancelled",
+      "discriminator": [
+        22,
+        106,
+        118,
+        26,
+        83,
+        110,
+        71,
+        174
+      ]
+    },
+    {
+      "name": "RedemptionFulfilled",
+      "discriminator": [
+        73,
+        134,
+        70,
+        2,
+        131,
+        17,
+        134,
+        141
+      ]
+    },
+    {
+      "name": "RedemptionRequested",
+      "discriminator": [
+        245,
+        155,
+        98,
+        131,
+        210,
+        25,
+        137,
+        146
+      ]
+    },
+    {
+      "name": "RedemptionStatusUpdated",
+      "discriminator": [
+        90,
+        237,
+        111,
+        145,
+        167,
+        234,
+        143,
+        14
+      ]
+    },
+    {
+      "name": "RoleAssigned",
+      "discriminator": [
+        15,
+        207,
+        225,
+        171,
+        169,
+        117,
+        98,
+        131
+      ]
+    },
+    {
+      "name": "RoleRemoved",
+      "discriminator": [
+        133,
+        35,
+        214,
+        234,
+        203,
+        157,
+        203,
+        53
+      ]
+    },
+    {
+      "name": "RoleUpdated",
+      "discriminator": [
+        155,
+        222,
+        44,
+        187,
+        5,
+        65,
+        10,
+        212
+      ]
+    },
+    {
+      "name": "TokenInitialized",
+      "discriminator": [
+        77,
+        70,
+        233,
+        124,
+        236,
+        92,
+        204,
+        0
+      ]
+    },
+    {
+      "name": "TokensMinted",
+      "discriminator": [
+        207,
+        212,
+        128,
+        194,
+        175,
+        54,
+        64,
+        24
+      ]
+    },
+    {
+      "name": "TokensWiped",
+      "discriminator": [
+        227,
+        104,
+        20,
+        107,
+        228,
+        89,
+        52,
+        164
+      ]
+    },
+    {
+      "name": "WithheldTokensWithdrawn",
+      "discriminator": [
+        8,
+        156,
+        92,
+        149,
+        12,
+        68,
+        44,
+        11
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidAmount",
+      "msg": "Invalid amount."
+    },
+    {
+      "code": 6001,
+      "name": "ContractPaused",
+      "msg": "Contract is paused."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidRequestStatus",
+      "msg": "Invalid redemption request status for this action."
+    },
+    {
+      "code": 6003,
+      "name": "AddressNotBlacklisted",
+      "msg": "Address is not on the blacklist."
+    },
+    {
+      "code": 6004,
+      "name": "CounterOverflow",
+      "msg": "Counter overflow."
+    },
+    {
+      "code": 6005,
+      "name": "InsufficientBalance",
+      "msg": "Insufficient token balance."
+    },
+    {
+      "code": 6006,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access."
+    },
+    {
+      "code": 6007,
+      "name": "InsufficientAvailableTokens",
+      "msg": "Insufficient available tokens (some may be delegated for redemption)."
+    }
+  ],
+  "types": [
+    {
+      "name": "AdminSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AuthorityTransferred",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority_type",
+            "type": "string"
+          },
+          {
+            "name": "old_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "new_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "transferred_by",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Config",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "gatekeeper_program",
+            "type": "pubkey"
+          },
+          {
+            "name": "redemption_request_counter",
+            "type": "u64"
+          },
+          {
+            "name": "is_paused",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PauseToggled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "is_paused",
+            "type": "bool"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionCancelled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "request_id",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "cancelled_by",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionFulfilled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "request_id",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionRequest",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "RedemptionStatus"
+              }
+            }
+          },
+          {
+            "name": "requested_at",
+            "type": "i64"
+          },
+          {
+            "name": "completed_at",
+            "type": "i64"
+          },
+          {
+            "name": "request_id",
+            "type": "u64"
+          },
+          {
+            "name": "redemption_pda_bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionRequested",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "request_id",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pending"
+          },
+          {
+            "name": "Processing"
+          },
+          {
+            "name": "Fulfilled"
+          },
+          {
+            "name": "Cancelled"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionStatusUpdated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "request_id",
+            "type": "u64"
+          },
+          {
+            "name": "old_status",
+            "type": {
+              "defined": {
+                "name": "RedemptionStatus"
+              }
+            }
+          },
+          {
+            "name": "new_status",
+            "type": {
+              "defined": {
+                "name": "RedemptionStatus"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Role",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "SupplyController"
+          },
+          {
+            "name": "AssetProtector"
+          },
+          {
+            "name": "FeeController"
+          },
+          {
+            "name": "DefaultAdmin"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleAssigned",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleRemoved",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleUpdated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "role",
+            "type": "string"
+          },
+          {
+            "name": "old_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "new_authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenInitialized",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "gatekeeper_program",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokensMinted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "to",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "recipient",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokensWiped",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "target_user",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserRole",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "Role"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WithheldTokensWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "destination",
+            "type": "pubkey"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    }
+  ]
+}
