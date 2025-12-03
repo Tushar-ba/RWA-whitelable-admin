@@ -7,7 +7,11 @@ if (!MONGODB_URI) {
 
 export const connectDatabase = async (): Promise<void> => {
   try {
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(MONGODB_URI, {
+      dbName: 'vaulted_assets'
+    });
+ 
+    console.log(MONGODB_URI);
     console.log('✅ Connected to MongoDB successfully');
   } catch (error) {
     console.error('❌ MongoDB connection error:', error);

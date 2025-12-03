@@ -149,9 +149,9 @@ export const useProcessRedemption = () => {
     }: ProcessRedemptionParams): Promise<string> => {
       if (!isConnected || !connectedAddress) {
         toast({
-          title: "Wallet Not Connected",
+          title: "Ethereum Wallet Not Connected",
           description:
-            "Please connect your wallet before performing blockchain operations",
+            "Please connect your Ethereum wallet before performing this operation",
           variant: "destructive",
         });
         throw new Error("Wallet not connected");

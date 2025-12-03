@@ -3,13 +3,17 @@ import mongoose from "mongoose";
 import { Role } from "../schemas/role.schema";
 
 async function main() {
-  const uri = process.env.MONGODB_URI;
-  if (!uri) {
+  const MONGODB_URI = process.env.MONGODB_URI;
+  if (!MONGODB_URI) {
     console.error("❌ MONGODB_URI is not defined in the environment variables");
     process.exit(1);
   }
 
-  await mongoose.connect(uri);
+  await mongoose.connect(MONGODB_URI, {
+    dbName: 'vaulted_assets'
+  });
+   
+  console.log(MONGODB_URI);
   console.log("✅ Connected to MongoDB");
 
   const rolesToEnsure = [

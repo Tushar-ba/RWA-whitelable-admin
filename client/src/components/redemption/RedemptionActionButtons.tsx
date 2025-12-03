@@ -27,7 +27,9 @@ export function RedemptionActionButtons({
   currentStatus,
   onStatusUpdate,
 }: RedemptionActionButtonsProps) {
-  const [,navigate] = useLocation();
+  const [, navigate] = useLocation();
+  const normalizedNetwork = network?.toLowerCase() || "";
+  const isSolanaNetwork = normalizedNetwork === "solana";
   // Hook instances
   const {
     processRedemption,
@@ -52,7 +54,7 @@ console.log("metal",metal)
   // Handle process redemption (Start Processing)
   const handleProcessRedemption = async () => {
     try {
-      if (network === "Solana") {
+      if (isSolanaNetwork) {
        const res:any= await setRedemptionProcessing(requestId,walletAddress);
         if(res?.signature){
           updateRedemptionStatus(requestId,'processing',navigate)
@@ -79,7 +81,7 @@ console.log("metal",metal)
   // Handle burn tokens (Burn Tokens / Fulfill)
   const handleBurnTokens = async () => {
     try {
-      if (network === "Solana") {
+      if (isSolanaNetwork) {
        const res:any = await fulfillRedemption(requestId,walletAddress);
         if(res?.signature){
           updateRedemptionStatus(requestId,'completed',navigate)
@@ -105,7 +107,7 @@ console.log("metal",metal)
   // Handle cancel redemption
   const handleCancelRedemption = async () => {
     try {
-      if (network === "Solana") {
+      if (isSolanaNetwork) {
        const res:any= await cancelRedemptionSolana(requestId,walletAddress);
         if(res?.signature){
           updateRedemptionStatus(requestId,'cancelled',navigate)
