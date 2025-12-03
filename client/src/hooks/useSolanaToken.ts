@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Connection, Transaction } from "@solana/web3.js";
+import { Connection, LAMPORTS_PER_SOL, Transaction } from "@solana/web3.js";
 import { useAppKitAccount, useAppKitProvider } from "@reown/appkit/react";
 import { Program, AnchorProvider, Idl, BN } from "@coral-xyz/anchor";
 import {
@@ -187,9 +187,13 @@ export function useMemeTokenProgram(tokenType: string) {
       // })
       // .signers([supplyController])
       // .rpc();
+      
+        
+        const ConvertedAmount = new BN(amount * LAMPORTS_PER_SOL);
+        console.log(ConvertedAmount);
 
       const tx = await program.methods
-        .mintTokens(new BN(amount), recipientPublicKey) // Also use BN for amount
+        .mintTokens(new BN(ConvertedAmount), recipientPublicKey) // Also use BN for amount
         .accounts({
           config: configPda, // ✅ Remove .toString()
           supplyControllerAuthority: publicKey, // ✅ Remove .toString()

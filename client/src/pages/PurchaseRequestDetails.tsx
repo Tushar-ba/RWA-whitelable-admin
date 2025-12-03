@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {ethers} from "ethers"
 import {
   Dialog,
   DialogContent,
@@ -172,9 +173,11 @@ export default function PurchaseRequestDetails() {
     mutationFn: async () => {
       if (!request) throw new Error("Purchase request not found");
 
+      const convertedAmount = ethers.parseEther(request.tokenAmount);
+      console.log(convertedAmount);
       return await mintTokens({
         to: request.walletAddress,
-        amount: request.usdAmount,
+        amount: convertedAmount,
         metal: request.metal as "gold" | "silver",
         purchaseRequestId: request.id,
       });
@@ -218,7 +221,7 @@ export default function PurchaseRequestDetails() {
     if (!request) return;
 
     if (network === "solana") {
-      const amount = parseFloat(request.usdAmount);
+      const amount = parseFloat(request.tokenAmount);
      const res:any = await solanaMintToken(amount, request.walletAddress);
       console.log("res",res);
       if(res?.signature){
