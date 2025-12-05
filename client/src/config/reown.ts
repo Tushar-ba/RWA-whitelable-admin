@@ -1,29 +1,64 @@
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
 import { SolanaAdapter } from "@reown/appkit-adapter-solana";
-import { mainnet, polygon, holesky, solanaDevnet } from "@reown/appkit/networks";
+import { polygon, holesky, solanaDevnet } from "@reown/appkit/networks";
 import type { AppKitNetwork } from "@reown/appkit/networks";
+import { defineChain } from "viem";
 
 // 1. Get projectId from environment
 const projectId = "7b39e78fb1848ff518252fe1d2153800";
 
-// 2. Set up networks including Solana
-const networks = [mainnet, polygon, holesky, solanaDevnet] as [
+// 2. Define Hoodi Testnet as a custom chain using viem
+// Chain ID can be configured via env var, defaulting to a common testnet ID
+const hoodiChainId = Number(import.meta.env.VITE_HOODI_CHAIN_ID || "560048"); // Default to Holesky-like ID, update if different
+const hoodiRpcUrl = import.meta.env.VITE_ETHEREUM_RPC_URL || "https://0xrpc.io/hoodi";
+
+const hoodiChain = defineChain({
+  id: hoodiChainId,
+  name: "Hoodi Testnet",
+  network: "hoodi-testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Ether",
+    symbol: "ETH",
+  },
+  rpcUrls: {
+    default: {
+      http: [hoodiRpcUrl],
+    },
+    public: {
+      http: [hoodiRpcUrl],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Hoodi Explorer",
+      url: import.meta.env.VITE_HOODI_EXPLORER_URL || "https://explorer.hoodi.io",
+    },
+  },
+  testnet: true,
+});
+
+// Convert to AppKitNetwork format
+const hoodiTestnet: AppKitNetwork = hoodiChain as AppKitNetwork;
+
+// 3. Set up networks - Hoodi testnet first (as primary), then others
+const networks = [hoodiTestnet, polygon, holesky, solanaDevnet] as [
   AppKitNetwork,
   ...AppKitNetwork[],
 ];
 
-// 3. Setup Wagmi adapter for Ethereum networks
+// 4. Setup Wagmi adapter for Ethereum networks
 const wagmiAdapter = new WagmiAdapter({
   networks,
   projectId,
   ssr: true,
 });
 
-// 4. Setup Solana adapter
+// 5. Setup Solana adapter
 const solanaWeb3JsAdapter = new SolanaAdapter();
 
-// 5. Configure the metadata
+// 6. Configure the metadata
 const metadata = {
   name: "Vaulted Assets Admin",
   description: "Admin panel for precious metals trading platform",
@@ -35,7 +70,7 @@ const metadata = {
   ],
 };
 
-// 6. Create the AppKit instance with both Ethereum and Solana support
+// 7. Create the AppKit instance with both Ethereum and Solana support
 export const appKit = createAppKit({
   adapters: [wagmiAdapter, solanaWeb3JsAdapter],
   networks,

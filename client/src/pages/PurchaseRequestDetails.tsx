@@ -177,7 +177,7 @@ export default function PurchaseRequestDetails() {
       console.log(convertedAmount);
       return await mintTokens({
         to: request.walletAddress,
-        amount: convertedAmount,
+        amount: request.tokenAmount,
         metal: request.metal as "gold" | "silver",
         purchaseRequestId: request.id,
       });

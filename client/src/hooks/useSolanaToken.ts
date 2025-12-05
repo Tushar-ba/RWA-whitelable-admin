@@ -22,14 +22,15 @@ import { toast } from "./use-toast";
 import apiRequest from "@/lib/apiClient";
 // import { PROGRAM_ID } from '../utils/constants';
 
-// Program IDs for both tokens
-// Fallback to known IDs if env vars are missing so the app doesn't crash
+// Program IDs for both tokens (Solana)
+// NOTE: These MUST be Solana public keys, not EVM (0x...) addresses.
+// We use dedicated SOLANA env vars so Ethereum contract envs can be 0x addresses.
 const GOLD_PROGRAM_ID = new PublicKey(
-  import.meta.env.VITE_GOLD_TOKEN_CONTRACT ||
+  import.meta.env.VITE_SOLANA_GOLD_PROGRAM_ID ||
     "4Abztzso97KPMy6fdexqNeVKqUUn2KF5aw6Vb99rV8qg",
 );
 const SILVER_PROGRAM_ID = new PublicKey(
-  import.meta.env.VITE_SILVER_TOKEN_CONTRACT ||
+  import.meta.env.VITE_SOLANA_SILVER_PROGRAM_ID ||
     "3teuujqputEYdvTTLK6eoYygKF2EWDdgFVFGQoce3mc3",
 );
 const GATEKEEPER_PROGRAM_ID = new PublicKey(

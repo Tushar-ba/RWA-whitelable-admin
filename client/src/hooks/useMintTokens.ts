@@ -13,7 +13,7 @@ import SilverTokenABI from "@assets/SilverToken_1754929372833.json";
 
 interface MintTokensParams {
   to: string; // User's wallet address
-  amount: bigint; // USD amount in string format
+  amount: string; // USD amount in string format
   metal: "gold" | "silver"; // Which token to mint
   purchaseRequestId: string; // For database update
 }
