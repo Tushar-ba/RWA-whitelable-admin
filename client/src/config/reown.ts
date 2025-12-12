@@ -6,7 +6,7 @@ import type { AppKitNetwork } from "@reown/appkit/networks";
 import { defineChain } from "viem";
 
 // 1. Get projectId from environment
-const projectId = "ebe9c55f5555613ca9fef084169c9e21";
+const projectId = "7b39e78fb1848ff518252fe1d2153800";
 
 // 2. Define Hoodi Testnet as a custom chain using viem
 // Chain ID can be configured via env var, defaulting to a common testnet ID
