@@ -1,7 +1,7 @@
-# Vaulted Assets Admin Final
+# Solulab Assets Admin
 
 ## Overview
-Vaulted Assets Admin Final is a fullstack web application for managing a precious metals trading platform. It enables administrators to oversee token operations for gold and silver, manage user accounts, process purchase and redemption requests, and maintain platform security through role-based access control. This application serves as the administrative backbone for a tokenized precious metals marketplace where users can buy and redeem physical gold and silver backed by actual inventory.
+Solulab Assets Admin is a fullstack web application for managing a precious metals trading platform. It enables administrators to oversee token operations for gold and silver, manage user accounts, process purchase and redemption requests, and maintain platform security through role-based access control. This application serves as the administrative backbone for a tokenized precious metals marketplace where users can buy and redeem physical gold and silver backed by actual inventory.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.

@@ -176,6 +176,11 @@ export const useProcessRedemption = () => {
       console.log("Request ID (string):", requestId);
       console.log("Request ID (uint256):", numericRequestId);
 
+      // Determine chain ID from env (align with Reown Hoodi chain config)
+      const targetChainId = Number(
+        import.meta.env.VITE_HOODI_CHAIN_ID || "560048",
+      );
+
       // Store parameters for tracking
       setProcessParams({ requestId, metal });
       setIsProcessing(true);
@@ -188,7 +193,7 @@ export const useProcessRedemption = () => {
           abi: tokenConfig.abi,
           functionName: "setRedemptionProcessing",
           args: [numericRequestId],
-          chainId: 17000, // Holesky testnet
+          chainId: targetChainId, // Hoodi testnet (configurable)
         });
 
         toast({

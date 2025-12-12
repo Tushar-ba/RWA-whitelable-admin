@@ -57,7 +57,7 @@ export default function LoginForm({ onSuccess, onForgotPassword }: LoginFormProp
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl text-center">Sign In</CardTitle>
         <CardDescription className="text-center">
-          Secure access to Vaulted Assets admin portal
+          Secure access to Solulab Assets admin portal
         </CardDescription>
       </CardHeader>
       <CardContent>

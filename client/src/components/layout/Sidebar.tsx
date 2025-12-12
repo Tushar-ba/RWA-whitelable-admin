@@ -71,10 +71,10 @@ export default function Sidebar() {
         <div className="flex items-center mb-8">
           <img
             src={logoImage}
-            alt="Vaulted Assets Logo"
+            alt="Solulab Assets Logo"
             className="w-8 h-8 mr-3"
           />
-          <h1 className="text-xl font-bold text-brand-dark">Vaulted Assets</h1>
+          <h1 className="text-xl font-bold text-brand-dark">Solulab Assets</h1>
         </div>
 
         <nav className="space-y-2">

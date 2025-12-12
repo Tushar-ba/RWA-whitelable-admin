@@ -36,7 +36,7 @@ export default function Login() {
       <div className="w-full max-w-md mx-4">
         <div className="text-center mb-8">
           <img src={logoImage} alt="Vaulted Assets Logo" className="mx-auto w-16 h-16 mb-4" />
-          <h2 className="text-3xl font-bold text-gray-800">Vaulted Assets</h2>
+          <h2 className="text-3xl font-bold text-gray-800">Solulab Assets</h2>
           <p className="text-gray-600 mt-2">Admin Portal</p>
         </div>
 

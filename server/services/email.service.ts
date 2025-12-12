@@ -51,10 +51,10 @@ export class EmailService {
         email: process.env.SENDGRID_EMAIL,
         name: process.env.SENDGRID_NAME
       },
-      subject: 'Welcome to Vaulted Assets Admin Panel - Account Created',
+      subject: 'Welcome to Solulab Assets Admin Panel - Account Created',
       text: `Hi ${adminName},
 
-You have been invited to join the Vaulted Assets Admin Panel by ${inviterName}.
+You have been invited to join the Solulab Assets Admin Panel by ${inviterName}.
 
 Your admin account has been created with the following credentials:
 Email: ${email}
@@ -73,11 +73,11 @@ This invitation and OTP will expire in 24 hours.
 Welcome to the team!
 
 Best regards,
-Vaulted Assets Team`,
+Solulab Assets Team`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
           <div style="background: linear-gradient(135deg, #8F541D 0%, #CF9531 100%); color: white; padding: 30px; text-align: center;">
-            <h1 style="margin: 0; font-size: 28px;">Welcome to Vaulted Assets</h1>
+            <h1 style="margin: 0; font-size: 28px;">Welcome to Solulab Assets</h1>
             <p style="margin: 10px 0 0 0; font-size: 16px;">Admin Panel Access</p>
           </div>
           
@@ -85,7 +85,7 @@ Vaulted Assets Team`,
             <p style="font-size: 16px; color: #333; margin-bottom: 20px;">Hi <strong>${adminName}</strong>,</p>
             
             <p style="color: #555; line-height: 1.6;">
-              You have been invited to join the Vaulted Assets Admin Panel by <strong>${inviterName}</strong>. 
+              You have been invited to join the Solulab Assets Admin Panel by <strong>${inviterName}</strong>. 
               Your admin account has been created and is ready to use.
             </p>
             
@@ -128,7 +128,7 @@ Vaulted Assets Team`,
           </div>
           
           <div style="background-color: #f8f9fa; padding: 20px; text-align: center; color: #666; font-size: 12px;">
-            <p style="margin: 0;">This is an automated message from Vaulted Assets Platform.</p>
+            <p style="margin: 0;">This is an automated message from Solulab Assets Platform.</p>
             <p style="margin: 5px 0 0 0;">Please do not reply to this email. For support, contact your administrator.</p>
           </div>
         </div>
@@ -150,28 +150,28 @@ Vaulted Assets Team`,
         email: process.env.SENDGRID_EMAIL,
         name: process.env.SENDGRID_NAME
       },
-      subject: 'Vaulted Assets - Email Verification Code',
+      subject: 'Solulab Assets - Email Verification Code',
       text: `Hi ${userName},
 
-Your verification code for Vaulted Assets Admin Panel is: ${otp}
+Your verification code for Solulab Assets Admin Panel is: ${otp}
 
 This code will expire in 10 minutes.
 
 If you didn't request this, please contact your administrator immediately.
 
 Thank you,
-Vaulted Assets Team`,
+Solulab Assets Team`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #8F541D 0%, #CF9531 100%); color: white; padding: 20px; text-align: center;">
-            <h2 style="margin: 0;">Vaulted Assets Admin Panel</h2>
+            <h2 style="margin: 0;">Solulab Assets Admin Panel</h2>
             <p style="margin: 10px 0 0 0;">Email Verification</p>
           </div>
           
           <div style="padding: 30px;">
             <p>Hi <strong>${userName}</strong>,</p>
             
-            <p style="color: #555;">Your verification code for the Vaulted Assets Admin Panel is:</p>
+            <p style="color: #555;">Your verification code for the Solulab Assets Admin Panel is:</p>
             
             <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
               <div style="font-size: 36px; font-weight: bold; color: #CF9531; letter-spacing: 8px; margin: 10px 0;">
@@ -184,7 +184,7 @@ Vaulted Assets Team`,
           </div>
           
           <div style="background-color: #f8f9fa; padding: 15px; text-align: center; color: #666; font-size: 12px;">
-            <p style="margin: 0;">This is an automated security message from Vaulted Assets Platform.</p>
+            <p style="margin: 0;">This is an automated security message from Solulab Assets Platform.</p>
           </div>
         </div>
       `
@@ -209,10 +209,10 @@ Vaulted Assets Team`,
         email: process.env.SENDGRID_EMAIL,
         name: process.env.SENDGRID_NAME
       },
-      subject: 'Vaulted Assets - Change Password Verification',
+      subject: 'Solulab Assets - Change Password Verification',
       text: `Hi ${userName},
 
-You have requested to change your password for Vaulted Assets Admin Panel.
+You have requested to change your password for Solulab Assets Admin Panel.
 
 Your verification code is: ${otp}
 
@@ -221,18 +221,18 @@ This code will expire in 10 minutes.
 If you didn't request this password change, please contact your administrator immediately.
 
 Thank you,
-Vaulted Assets Team`,
+Solulab Assets Team`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #8F541D 0%, #CF9531 100%); color: white; padding: 20px; text-align: center;">
             <h2 style="margin: 0;">Password Change Verification</h2>
-            <p style="margin: 10px 0 0 0;">Vaulted Assets Admin Panel</p>
+            <p style="margin: 10px 0 0 0;">Solulab Assets Admin Panel</p>
           </div>
           
           <div style="padding: 30px;">
             <p>Hi <strong>${userName}</strong>,</p>
             
-            <p style="color: #555;">You have requested to change your password for the Vaulted Assets Admin Panel.</p>
+            <p style="color: #555;">You have requested to change your password for the Solulab Assets Admin Panel.</p>
             
             <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
               <div style="font-size: 36px; font-weight: bold; color: #CF9531; letter-spacing: 8px; margin: 10px 0;">
@@ -251,7 +251,7 @@ Vaulted Assets Team`,
           </div>
           
           <div style="background-color: #f8f9fa; padding: 15px; text-align: center; color: #666; font-size: 12px;">
-            <p style="margin: 0;">This is an automated security message from Vaulted Assets Platform.</p>
+            <p style="margin: 0;">This is an automated security message from Solulab Assets Platform.</p>
           </div>
         </div>
       `
@@ -277,10 +277,10 @@ Vaulted Assets Team`,
         email: process.env.SENDGRID_EMAIL,
         name: process.env.SENDGRID_NAME
       },
-      subject: 'Vaulted Assets - Password Reset Request',
+      subject: 'Solulab Assets - Password Reset Request',
       text: `Hi ${userName},
 
-You requested to reset your password for Vaulted Assets Admin Panel.
+You requested to reset your password for Solulab Assets Admin Panel.
 
 Click the link below to reset your password:
 ${resetUrl}
@@ -290,18 +290,18 @@ This link will expire in 1 hour.
 If you didn't request this, please ignore this email and contact your administrator.
 
 Thank you,
-Vaulted Assets Team`,
+Solulab Assets Team`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #8F541D 0%, #CF9531 100%); color: white; padding: 20px; text-align: center;">
             <h2 style="margin: 0;">Password Reset Request</h2>
-            <p style="margin: 10px 0 0 0;">Vaulted Assets Admin Panel</p>
+            <p style="margin: 10px 0 0 0;">Solulab Assets Admin Panel</p>
           </div>
           
           <div style="padding: 30px;">
             <p>Hi <strong>${userName}</strong>,</p>
             
-            <p style="color: #555;">You requested to reset your password for the Vaulted Assets Admin Panel.</p>
+            <p style="color: #555;">You requested to reset your password for the Solulab Assets Admin Panel.</p>
             
             <div style="text-align: center; margin: 30px 0;">
               <a href="${resetUrl}" style="background-color: #8F541D; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">
@@ -322,7 +322,7 @@ Vaulted Assets Team`,
           </div>
           
           <div style="background-color: #f8f9fa; padding: 15px; text-align: center; color: #666; font-size: 12px;">
-            <p style="margin: 0;">This is an automated security message from Vaulted Assets Platform.</p>
+            <p style="margin: 0;">This is an automated security message from Solulab Assets Platform.</p>
           </div>
         </div>
       `
@@ -360,7 +360,7 @@ Vaulted Assets Team`,
       to: userEmail,
       from: {
         email: process.env.SENDGRID_EMAIL,
-        name: 'Vaulted Assets'
+        name: 'Solulab Assets'
       },
       subject: `Tokens Successfully Minted - ${tokenDetails.metal.toUpperCase()} Investment Confirmed`,
       text: `Dear ${userName},
@@ -387,7 +387,7 @@ Your tokens are now active and represent your ownership of physical ${tokenDetai
 
 You can view your complete investment portfolio at: ${dashboardUrl}
 
-Thank you for choosing Vaulted Assets for your precious metals investment.
+Thank you for choosing Solulab Assets for your precious metals investment.
 
 Best regards,
 Vaulted Assets Team`,
@@ -480,12 +480,12 @@ Vaulted Assets Team`,
             </div>
             
             <p style="color: #666; font-size: 14px; line-height: 1.5;">
-              Thank you for choosing Vaulted Assets for your precious metals investment. Your trust in our platform and our commitment to security and transparency makes this partnership valuable.
+              Thank you for choosing Solulab Assets for your precious metals investment. Your trust in our platform and our commitment to security and transparency makes this partnership valuable.
             </p>
           </div>
           
           <div style="background-color: #f8f9fa; padding: 20px; text-align: center; color: #666; font-size: 12px; border-top: 1px solid #dee2e6;">
-            <p style="margin: 0 0 10px 0;">This is an automated confirmation from Vaulted Assets Platform.</p>
+            <p style="margin: 0 0 10px 0;">This is an automated confirmation from Solulab Assets Platform.</p>
             <p style="margin: 0;">Keep this email for your records. Your transaction hash serves as proof of token minting.</p>
           </div>
         </div>

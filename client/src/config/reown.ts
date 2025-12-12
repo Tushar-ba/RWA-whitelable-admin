@@ -60,7 +60,7 @@ const solanaWeb3JsAdapter = new SolanaAdapter();
 
 // 6. Configure the metadata
 const metadata = {
-  name: "Vaulted Assets Admin",
+  name: "Solulab Assets Admin",
   description: "Admin panel for precious metals trading platform",
   url: typeof window !== "undefined" ? window.location.origin : "https://vaulted-assets.replit.app",
   icons: [
